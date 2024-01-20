@@ -1,0 +1,142 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bac8007dd04da848bb241efddd58ec8, type: 3}
+  m_Name: New FSMContorller_0
+  m_EditorClassIdentifier: 
+  states:
+  - rect:
+      serializedVersion: 2
+      x: -13.333336
+      y: -243.33331
+      width: 480
+      height: 90
+    defualtState: 0
+    name: AnyState
+    trasitions: []
+    stateActions:
+      EnterActions: []
+      ExitActions: []
+      OnUpdateActions: []
+      FixUpdateActions: []
+      LaterUpdateActions: []
+  - rect:
+      serializedVersion: 2
+      x: 0
+      y: -100
+      width: 480
+      height: 90
+    defualtState: 0
+    name: EnterState
+    trasitions: []
+    stateActions:
+      EnterActions: []
+      ExitActions: []
+      OnUpdateActions: []
+      FixUpdateActions: []
+      LaterUpdateActions: []
+  - rect:
+      serializedVersion: 2
+      x: -2.6667736
+      y: 136.60025
+      width: 480
+      height: 90
+    defualtState: 1
+    name: Idle
+    trasitions:
+    - fromState: Idle
+      toState: Attack
+      conditions:
+      - tragetValue: 1
+        paramterName: Attack
+        compareType: 2
+    - fromState: Idle
+      toState: Move
+      conditions:
+      - tragetValue: 0.000001
+        paramterName: Velocity
+        compareType: 0
+    stateActions:
+      EnterActions:
+      - {fileID: 11400000, guid: f9932a70fccef4047a5131e768638c1a, type: 2}
+      ExitActions: []
+      OnUpdateActions: []
+      FixUpdateActions: []
+      LaterUpdateActions: []
+  - rect:
+      serializedVersion: 2
+      x: 347.33325
+      y: 336.60037
+      width: 480
+      height: 90
+    defualtState: 0
+    name: Move
+    trasitions:
+    - fromState: Move
+      toState: Idle
+      conditions:
+      - tragetValue: 0.000001
+        paramterName: Velocity
+        compareType: 1
+    - fromState: Move
+      toState: Attack
+      conditions:
+      - tragetValue: 1
+        paramterName: Attack
+        compareType: 2
+    stateActions:
+      EnterActions:
+      - {fileID: 11400000, guid: f9932a70fccef4047a5131e768638c1a, type: 2}
+      ExitActions: []
+      OnUpdateActions: []
+      FixUpdateActions: []
+      LaterUpdateActions: []
+  - rect:
+      serializedVersion: 2
+      x: 3.9999359
+      y: 539.93335
+      width: 480
+      height: 90
+    defualtState: 0
+    name: Attack
+    trasitions:
+    - fromState: Attack
+      toState: Move
+      conditions:
+      - tragetValue: 0
+        paramterName: Attack
+        compareType: 2
+      - tragetValue: 0.000001
+        paramterName: Velocity
+        compareType: 0
+    - fromState: Attack
+      toState: Idle
+      conditions:
+      - tragetValue: 0
+        paramterName: Attack
+        compareType: 2
+      - tragetValue: 0.000001
+        paramterName: Velocity
+        compareType: 1
+    stateActions:
+      EnterActions:
+      - {fileID: 11400000, guid: f9932a70fccef4047a5131e768638c1a, type: 2}
+      ExitActions: []
+      OnUpdateActions: []
+      FixUpdateActions: []
+      LaterUpdateActions: []
+  paramters:
+  - name: Attack
+    value: 0
+    paramterType: 2
+  - name: Velocity
+    value: 0
+    paramterType: 0
